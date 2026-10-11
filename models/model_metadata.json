@@ -1,0 +1,17 @@
+{
+  "model_name": "XGBoost",
+  "decision_threshold": 0.7400000000000002,
+  "selection_metric": "validation average precision (PR-AUC)",
+  "random_state": 42,
+  "features": [
+    "Air temperature _K_",
+    "Process temperature _K_",
+    "Rotational speed _rpm_",
+    "Torque _Nm_",
+    "Tool wear _min_",
+    "Type_H",
+    "Type_L",
+    "Type_M"
+  ],
+  "dataset": "UCI AI4I 2020 Predictive Maintenance Dataset"
+}

@@ -1,141 +1,79 @@
 # Industrial AI Platform
 
-A machine learning project that uses industrial sensor data to predict potential machine failures. The goal is to identify machines that may need attention before an unexpected breakdown occurs.
+This project is about using machine learning to predict machine failures from industrial data.
 
-I built this project to get practical experience with machine learning, API development, and connecting a model to a web application.
+I built this project to learn how machine learning can be used in real-world applications. I worked with the AI4I 2020 Predictive Maintenance dataset, trained a model to predict machine failures, and built a FastAPI backend with a React frontend.
 
-## What does it do?
+## What I Built
 
-The application uses machine operating data to estimate the risk of machine failure. It takes sensor readings as input, sends them to a trained machine learning model, and returns a prediction through an API.
+- A machine failure prediction model using Random Forest.
+- A FastAPI backend to make predictions through an API.
+- A React and TypeScript frontend.
+- API tests using Pytest.
+- Database integration using PostgreSQL and SQLAlchemy.
 
-## Features
+## Tech Stack
 
-- Predicts potential machine failures using sensor data.
-- Uses a Random Forest classifier for failure prediction.
-- Provides a REST API built with FastAPI.
-- Includes a React and TypeScript frontend.
-- Supports API testing and input validation.
-- Uses PostgreSQL and SQLAlchemy for database integration.
-
-## Technologies Used
-
-- **Programming:** Python, TypeScript
-- **Machine Learning:** Pandas, scikit-learn, Random Forest
-- **Backend:** FastAPI
-- **Frontend:** React, Vite
-- **Database:** PostgreSQL, SQLAlchemy
-- **Testing:** Pytest
-- **Tools:** Git, GitHub
+- Python
+- Pandas
+- Scikit-learn
+- FastAPI
+- React
+- TypeScript
+- PostgreSQL
+- SQLAlchemy
+- Pytest
 
 ## Dataset
 
-The project uses the AI4I 2020 Predictive Maintenance dataset, which contains industrial machine data and failure labels.
+I used the AI4I 2020 Predictive Maintenance dataset. It contains information about machine operating conditions, including air temperature, process temperature, rotational speed, torque, and tool wear.
 
-The model uses features such as:
-- Air temperature
-- Process temperature
-- Rotational speed
-- Torque
-- Tool wear
+The model uses these features to predict whether a machine failure may occur.
 
-## Model Performance
+## Model Results
 
-The Random Forest model achieved the following validation results during development:
+During development, my Random Forest model achieved:
 
-| Metric | Score |
-|---|---:|
-| ROC-AUC | 0.9599 |
-| PR-AUC | 0.6461 |
+- ROC-AUC: 0.9599
+- PR-AUC: 0.6461
 
-The dataset has an imbalanced target, with approximately 3.4% of samples associated with machine failure. For this reason, PR-AUC is also useful when evaluating the model's ability to identify failures.
+Since machine failures are relatively rare in this dataset, I also looked at PR-AUC to evaluate the model.
 
-These are validation results from the available dataset, not a guarantee of performance on real industrial equipment.
+These results are from my development experiments and may differ on other data.
 
-## How to Run
+## Running the Project
 
-### 1. Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/JV-Shashank/Industrial-AI-Platform.git
 cd Industrial-AI-Platform
 ```
 
-### 2. Set up the Python environment
+Create and activate a Python virtual environment, then install the dependencies:
 
 ```bash
 python -m venv .venv
-```
-
-Activate the environment:
-
-**Windows**
-```bash
-.venv\Scripts\activate
-```
-
-**Linux/macOS**
-```bash
-source .venv/bin/activate
-```
-
-Install the Python dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start the backend
+Start the backend using the FastAPI entry point configured in the project. Once it is running, open:
 
-Run the FastAPI application using the actual Python module path configured in the project. For example, if the application is exposed as `app` in `src.api`:
+`http://127.0.0.1:8000/docs`
 
-```bash
-uvicorn src.api:app --reload
-```
-
-Open `http://127.0.0.1:8000/docs` to explore the API.
-
-The API includes a health-check endpoint and a prediction endpoint.
-
-### 4. Run the frontend
-
-Open a separate terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Use the local URL displayed by Vite to access the frontend.
-
-### 5. Run backend tests
-
-From the project root:
+To run the backend tests:
 
 ```bash
 pytest
 ```
 
-**Note:** The backend module path, database configuration, and frontend commands should match the current repository setup. Configure the required environment variables before running features that depend on PostgreSQL.
+For the frontend, go to its directory, install the npm dependencies, and start the Vite development server.
 
-## What I Learned
+## What I Want to Improve Next
 
-While building this project, I gained practical experience with:
+- Try other machine learning models and compare their results.
+- Improve failure detection by tuning the prediction threshold.
+- Add more useful information to the dashboard.
+- Explore model monitoring and retraining.
 
-- Preparing and analysing structured datasets.
-- Training and evaluating a classification model.
-- Working with imbalanced data and evaluation metrics.
-- Building REST APIs with FastAPI.
-- Connecting backend services with a frontend application.
-- Testing API endpoints and debugging application issues.
-
-## Future Improvements
-
-- Compare additional machine learning models.
-- Improve failure detection using precision, recall, and threshold tuning.
-- Add model monitoring and retraining workflows.
-- Improve the dashboard with more detailed machine-condition insights.
-
-## Disclaimer
-
-This is a learning project built using a public dataset. Its predictions should not be used as the sole basis for real industrial maintenance decisions without further testing and validation.
+This is a personal learning project using a public dataset. The predictions have not been validated for real industrial use.
